@@ -1,0 +1,209 @@
+/* ---------- Reset básico ---------- */
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+:root {
+  --bg: #fafafa;
+  --text: #1a1a1a;
+  --muted: #888;
+  --card-w: 320px;
+  --card-h: 400px;
+  --gap: 1.5rem;
+}
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: -apple-system, "Helvetica Neue", "Segoe UI", sans-serif;
+  line-height: 1.6;
+  padding: 4rem 0 3rem;
+  overflow-x: hidden;
+}
+
+/* ---------- Encabezado ---------- */
+.site-header {
+  max-width: 1100px;
+  margin: 0 auto 3rem;
+  padding: 0 1.5rem;
+  text-align: center;
+}
+
+.site-header h1 {
+  font-size: 2rem;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+}
+
+.tagline { color: var(--muted); font-size: 0.95rem; margin-top: 0.4rem; }
+
+.contact {
+  margin-top: 1.5rem;
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
+}
+
+.contact a {
+  color: var(--text);
+  text-decoration: none;
+  font-size: 0.9rem;
+  border-bottom: 1px solid transparent;
+  transition: border-color 0.2s;
+}
+.contact a:hover { border-bottom-color: var(--text); }
+
+/* ---------- Carrusel ---------- */
+.carousel {
+  position: relative;
+  padding: 1rem 0;
+}
+
+.carousel-track {
+  display: flex;
+  gap: var(--gap);
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  padding: 1.5rem 2rem;
+  scrollbar-width: none;              /* Firefox */
+  cursor: grab;
+}
+.carousel-track::-webkit-scrollbar { display: none; } /* Chrome/Safari */
+.carousel-track.dragging { cursor: grabbing; scroll-behavior: auto; }
+
+.card {
+  flex: 0 0 var(--card-w);
+  height: var(--card-h);
+  position: relative;
+  border-radius: 4px;
+  overflow: hidden;
+  background: #e8e8e8;
+  transition: transform 0.35s ease, box-shadow 0.35s ease;
+}
+
+.card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  /* Estado por defecto: un poco opacas y desaturadas */
+  opacity: 0.55;
+  filter: saturate(0.7);
+  transition: opacity 0.4s ease, filter 0.4s ease, transform 0.5s ease;
+  cursor: zoom-in;
+}
+
+/* Al pasar el mouse: imagen nítida y a color */
+.card:hover img,
+.card:focus-within img {
+  opacity: 1;
+  filter: saturate(1);
+  transform: scale(1.03);
+}
+
+.card:hover {
+  box-shadow: 0 12px 30px rgba(0,0,0,0.12);
+}
+
+/* Título que aparece al hacer hover */
+.card figcaption {
+  position: absolute;
+  left: 0; right: 0; bottom: 0;
+  padding: 1.5rem 1rem 0.9rem;
+  font-size: 0.8rem;
+  color: #fff;
+  background: linear-gradient(to top, rgba(0,0,0,0.55), transparent);
+  opacity: 0;
+  transform: translateY(6px);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  pointer-events: none;
+}
+.card:hover figcaption { opacity: 1; transform: translateY(0); }
+
+/* Botones de navegación */
+.nav-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 5;
+  width: 44px; height: 44px;
+  border: none;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.9);
+  color: var(--text);
+  font-size: 1.5rem;
+  line-height: 1;
+  cursor: pointer;
+  box-shadow: 0 4px 14px rgba(0,0,0,0.12);
+  transition: background 0.2s, transform 0.2s;
+}
+.nav-btn:hover { background: #fff; transform: translateY(-50%) scale(1.06); }
+.nav-btn.prev { left: 12px; }
+.nav-btn.next { right: 12px; }
+
+/* ---------- Pie de página ---------- */
+.site-footer {
+  max-width: 1100px;
+  margin: 4rem auto 0;
+  text-align: center;
+  font-size: 0.75rem;
+  color: var(--muted);
+  padding: 0 1.5rem;
+}
+
+/* ---------- Lightbox con fondo borroso ---------- */
+.lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  background: rgba(20, 20, 20, 0.45);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.lightbox.open {
+  opacity: 1;
+  visibility: visible;
+}
+
+.lightbox img {
+  max-width: 90vw;
+  max-height: 85vh;
+  width: auto;
+  height: auto;
+  border-radius: 6px;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.4);
+  transform: scale(0.96);
+  transition: transform 0.3s ease;
+  cursor: default;
+}
+.lightbox.open img { transform: scale(1); }
+
+.lightbox-close {
+  position: absolute;
+  top: 1.2rem; right: 1.5rem;
+  width: 44px; height: 44px;
+  border: none;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.15);
+  color: #fff;
+  font-size: 1.8rem;
+  line-height: 1;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+.lightbox-close:hover { background: rgba(255,255,255,0.3); }
+
+/* ---------- Móvil ---------- */
+@media (max-width: 600px) {
+  :root { --card-w: 78vw; --card-h: 62vw; }
+  body { padding-top: 2.5rem; }
+  .site-header { margin-bottom: 1.5rem; }
+  .nav-btn { display: none; }        /* En móvil se desliza con el dedo */
+  .lightbox { padding: 1rem; }
+}

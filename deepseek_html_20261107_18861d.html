@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tu Nombre — Ilustración</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <header class="site-header">
+    <h1>Tu Nombre</h1>
+    <p class="tagline">Ilustrador · Portafolio</p>
+    <nav class="contact">
+      <a href="mailto:tu@email.com">Email</a>
+      <a href="https://instagram.com/tu_usuario" target="_blank" rel="noopener">Instagram</a>
+      <a href="https://twitter.com/tu_usuario" target="_blank" rel="noopener">Twitter</a>
+    </nav>
+  </header>
+
+  <!-- Carrusel horizontal -->
+  <section class="carousel" aria-label="Galería de obras">
+    <div class="carousel-track" id="track">
+      <figure class="card">
+        <img src="images/obra1.jpg" alt="Título de la obra 1" loading="lazy">
+        <figcaption>Título de la obra 1 · 2025</figcaption>
+      </figure>
+      <figure class="card">
+        <img src="images/obra2.jpg" alt="Título de la obra 2" loading="lazy">
+        <figcaption>Título de la obra 2 · 2024</figcaption>
+      </figure>
+      <figure class="card">
+        <img src="images/obra3.jpg" alt="Título de la obra 3" loading="lazy">
+        <figcaption>Título de la obra 3 · 2024</figcaption>
+      </figure>
+      <!-- Copia este bloque <figure> para añadir más obras -->
+    </div>
+
+    <button class="nav-btn prev" id="prev" aria-label="Anterior">‹</button>
+    <button class="nav-btn next" id="next" aria-label="Siguiente">›</button>
+  </section>
+
+  <footer class="site-footer">
+    <p>© 2026 Tu Nombre. Todos los derechos reservados.</p>
+  </footer>
+
+  <!-- Lightbox -->
+  <div class="lightbox" id="lightbox" aria-hidden="true">
+    <button class="lightbox-close" id="lightboxClose" aria-label="Cerrar">×</button>
+    <img src="" alt="" id="lightboxImg">
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
