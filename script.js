@@ -1,11 +1,11 @@
 const imgs = [
-    "images/ilust1.png",
+    "images/ilust1.jpg",
     "images/ilust2.jpg",
     "images/ilust3.jpg",
-    "images/ilust4.png",
+    "images/ilust4.jpg",
     "images/ilust5.jpg",
-    "images/ilust6.png",
-    "images/ilust7.jpg"
+    "images/ilust6.jpg",
+    "images/ilust7.png"
 ];
 
 const track = document.getElementById("track");
@@ -38,7 +38,7 @@ close.onclick = () => {
 };
 
 
-// Cerrar haciendo click fuera de la imagen
+// Cerrar haciendo click fuera
 lightbox.onclick = (e) => {
 
     if (e.target === lightbox) {
@@ -48,7 +48,7 @@ lightbox.onclick = (e) => {
 };
 
 
-// Cerrar con tecla ESC
+// Cerrar con ESC
 document.onkeydown = (e) => {
 
     if (e.key === "Escape") {
